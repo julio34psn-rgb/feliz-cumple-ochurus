@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Cumpleaños ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ffe4e6, #fff1f3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Pantallas */
+.screen {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.active {
+  display: flex;
+}
+
+/* 🔐 Pantalla contraseña */
+.password-screen {
+  flex-direction: column;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(201, 24, 74, 0.2);
+}
+
+.password-screen h2 {
+  font-family: 'Playfair Display', serif;
+  color: #c9184a;
+  margin-bottom: 10px;
+}
+
+.input-display {
+  font-size: 26px;
+  letter-spacing: 10px;
+  margin: 20px 0;
+  color: #9d0208;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 65px);
+  gap: 12px;
+}
+
+.key {
+  background: #ffccd5;
+  border: none;
+  border-radius: 15px;
+  padding: 18px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.key:hover {
+  background: #ff8fa3;
+}
+
+/* 💌 Carta */
+.notepad {
+  position: relative;
+  background: #ffffff;
+  padding: 40px;
+  width: 90%;
+  max-width: 560px;
+  border-radius: 30px;
+  box-shadow: 0 25px 60px rgba(201, 24, 74, 0.25);
+  animation: openLetter 1.4s ease forwards;
+}
+
+.notepad::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 30px;
+  border-top: 6px solid #c9184a;
+}
+
+.notepad h3 {
+  font-family: 'Playfair Display', serif;
+  color: #c9184a;
+  margin-bottom: 5px;
+  text-align: center;
+  font-size: 28px;
+}
+
+.notepad h4 {
+  color: #6a040f;
+  margin-top: 0;
+  text-align: center;
+  font-size: 18px;
+}
+
+.notepad p {
+  color: #4a4a4a;
+  line-height: 1.8;
+  font-size: 15.5px;
+}
+
+/* ❤️ Corazón */
+.heart {
+  font-size: 28px;
+  color: #c9184a;
+  text-align: center;
+  animation: pulse 1.6s infinite;
+  margin-bottom: 10px;
+}
+
+/* ✨ Textos centrados finales */
+.center-text {
+  text-align: center;
+  font-weight: 500;
+}
+
+.final-text {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* 📸 Fotos laterales */
+.photo-frame {
+  position: absolute;
+  width: 150px;
+  border-radius: 22px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease;
+}
+
+.photo-frame:hover {
+  transform: scale(1.07);
+}
+
+/* Fotos grandes (1 y 4) */
+.photo-1,
+.photo-4 {
+  width: 190px;
+}
+
+.photo-1 { top: 10%; left: -200px; }
+.photo-2 { bottom: 10%; left: -170px; }
+.photo-3 { top: 10%; right: -170px; }
+.photo-4 { bottom: 10%; right: -200px; }
+
+/* 📱 Mobile */
+@media (max-width: 700px) {
+  .photo-frame {
+    position: static;
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+/* Animaciones */
+@keyframes openLetter {
+  0% {
+    opacity: 0;
+    transform: rotateX(-90deg) scale(0.85);
+  }
+  60% {
+    opacity: 1;
+    transform: rotateX(15deg) scale(1.02);
+  }
+  100% {
+    transform: rotateX(0deg) scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔐 Pantalla contraseña -->
+<div id="passwordScreen" class="screen password-screen active">
+  <h2>🎁 Sorpresa especial</h2>
+  <div class="input-display" id="inputDisplay">••••</div>
+
+  <div class="keypad">
+    <button class="key" onclick="enterDigit('1')">1</button>
+    <button class="key" onclick="enterDigit('2')">2</button>
+    <button class="key" onclick="enterDigit('3')">3</button>
+    <button class="key" onclick="enterDigit('4')">4</button>
+    <button class="key" onclick="enterDigit('5')">5</button>
+    <button class="key" onclick="enterDigit('6')">6</button>
+    <button class="key" onclick="enterDigit('7')">7</button>
+    <button class="key" onclick="enterDigit('8')">8</button>
+    <button class="key" onclick="enterDigit('9')">9</button>
+    <div></div>
+    <button class="key" onclick="enterDigit('0')">0</button>
+    <div></div>
+  </div>
+</div>
+
+<!-- 🎂 Carta -->
+<div id="notepadScreen" class="screen">
+  <div class="notepad">
+
+    <!-- Fotos -->
+    <img src="foto1.jpg" class="photo-frame photo-1">
+    <img src="foto2.jpg" class="photo-frame photo-2">
+    <img src="foto3.jpg" class="photo-frame photo-3">
+    <img src="foto4.jpg" class="photo-frame photo-4">
+
+    <div class="heart">🎂❤️</div>
+    <h3>🥳 Feliz cumpleaños 🥳</h3>
+    <h4>Mi querida ochurus ❤️</h4>
+
+    <p>
+      Hoy es un día muy especial e importante para ti como para mí, 
+      porque hoy celebramos 19 años que pasan por tu vida.
+      Me siento muy afortunado de poder estar contigo en un día como hoy 
+      para poder celebrar contigo tu cumpleaños.
+    </p>
+
+    <p>
+      Gracias por existir, desde que llegaste a mi vida todo se siente más bonito. 
+      Deseo con todo mi corazón que este nuevo año de vida te regale momentos llenos de felicidad.
+    </p>
+
+    <p>
+      Que nunca le falten razones para seguir luchando por lo que quieres. 
+      Prometo seguir a tu lado, apoyándote, cuidándote y amándote 
+      en cada paso que me permitas dar junto a ti.
+    </p>
+
+    <p>
+      Quiero ser tu apoyo cuando lo necesites y tu compañía en cada momento. 
+      Eres mi persona favorita y la razón de todas mis sonrisas.
+      Que la vida siempre te devuelva multiplicado todo el amor que das, 
+      porque te lo mereces más que nadie. Gracias por ser tú.
+    </p>
+
+    <p class="center-text">
+      Te amo más que a nada, hoy y siempre 💕✨
+    </p>
+
+    <p class="final-text">
+      🎂🎉🎂🎉 Que viva la cumpleañera 🎂🎉🎂🎉🎂
+    </p>
+
+  </div>
+</div>
+
+<script>
+const correctPassword = '1901';
+let input = '';
+
+function enterDigit(digit) {
+  if (input.length < 4) input += digit;
+
+  const display = document.getElementById('inputDisplay');
+  display.textContent = input.padEnd(4, '•');
+
+  if (input.length === 4) {
+    if (input === correctPassword) {
+      document.getElementById('passwordScreen').classList.remove('active');
+      document.getElementById('notepadScreen').classList.add('active');
+    } else {
+      alert('Intenta de nuevo ❤️');
+      input = '';
+      display.textContent = '••••';
+    }
+  }
+}
+</script>
+
+</body>
+</html>
